@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+    background-color: #000000; /* Netflix black */
+  }
+  
+  * {
+    @apply border-dark-border;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 text-white font-semibold px-8 py-3 rounded-netflix 
+           hover:bg-primary-600 transition-all duration-200 
+           active:scale-98 shadow-netflix hover:shadow-glow
+           text-base tracking-wide;
+  }
+  
+  .btn-accent {
+    @apply bg-accent-500 text-white font-semibold px-8 py-3 rounded-netflix 
+           hover:bg-accent-600 transition-all duration-200 
+           active:scale-98 shadow-netflix hover:shadow-accent-glow
+           text-base tracking-wide;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-600 text-white font-semibold px-8 py-3 rounded-netflix 
+           hover:bg-secondary-700 transition-all duration-200 
+           active:scale-98 shadow-netflix
+           text-base tracking-wide;
+  }
+  
+  .btn-white {
+    @apply bg-white text-black font-semibold px-8 py-3 rounded-netflix 
+           hover:bg-gray-200 transition-all duration-200 
+           active:scale-98 shadow-netflix
+           text-base tracking-wide;
+  }
+  
+  .card {
+    @apply bg-dark-surface border border-dark-border rounded-lg 
+           p-6 shadow-netflix backdrop-blur-sm;
+  }
+  
+  .input-custom {
+    @apply w-full rounded-netflix bg-dark-surface border border-dark-border 
+           px-4 py-3 text-dark-text outline-none 
+           focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 
+           transition-all duration-200 placeholder-dark-muted;
+  }
+}
