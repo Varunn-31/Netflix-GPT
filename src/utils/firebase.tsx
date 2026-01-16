@@ -16,6 +16,20 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
+// Validate Firebase configuration
+if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.projectId) {
+  console.error('Firebase configuration is missing. Please check your environment variables.');
+}
+
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+let app;
+let auth;
+try {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+} catch (error) {
+  console.error('Firebase initialization error:', error);
+  throw error;
+}
+
+export { auth };

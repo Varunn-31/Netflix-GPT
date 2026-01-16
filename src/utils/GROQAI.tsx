@@ -2,9 +2,17 @@
 import Groq from 'groq-sdk';
 
 const GROQ_API_KEY = process.env.REACT_APP_GROQ_API_KEY;
-const client = new Groq({ apiKey: GROQ_API_KEY, dangerouslyAllowBrowser: true });
+
+if (!GROQ_API_KEY) {
+  console.warn('REACT_APP_GROQ_API_KEY is not set. Groq features will not work.');
+}
+
+const client = GROQ_API_KEY ? new Groq({ apiKey: GROQ_API_KEY, dangerouslyAllowBrowser: true }) : null;
 
 export async function groqCompletion(input: string) {
+  if (!client) {
+    return { error: 'Groq API key is not configured. Please set REACT_APP_GROQ_API_KEY environment variable.' };
+  }
   try {
     const response = await client.chat.completions.create({
       model: "llama-3.3-70b-versatile",
