@@ -6,10 +6,11 @@ import MainContainer from "./MainContainer.tsx";
 import SecondaryContainer from "./SecondaryContainer.tsx";
 import GPTSearch from "./GPTSearch.tsx";
 import { useSelector } from "react-redux";
+import { RootState } from "../utils/appstore.tsx";
 import GPTMovieSuggestion from "./GPTMovieSuggestion.tsx";
 import { BG_URL } from "../utils/constants.tsx";
 const Browse = () => {
-    const showGPTSearch = useSelector((store: any) => store.gpt?.showGPTSearch);
+    const showGPTSearch = useSelector((store: RootState) => store.gpt.showGPTSearch);
     useNowPlayingMovies();
     usePopularMovies();
     useTrendingMovies();
